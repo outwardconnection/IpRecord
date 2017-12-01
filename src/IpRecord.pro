@@ -13,10 +13,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     ipdetect.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     ipdetect.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    iprecordgui.ui
+
+RESOURCES += \
+    res.qrc
+
+DISTFILES += \
+    ico.rc
+
+RC_FILE += \
+    ico.rc
+
