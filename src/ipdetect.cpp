@@ -223,12 +223,12 @@ void IpDetect::getIp()
 {
     if(!downPage)
     {
-        if(pNetManager==0)
+        if(pNetManager==Q_NULLPTR)
         {
             pNetManager = new QNetworkAccessManager(this);
             connect(pNetManager,SIGNAL(finished(QNetworkReply*)),this,SLOT(replyFinished(QNetworkReply*)));
         }
-        if(pRequest==0)
+        if(pRequest==Q_NULLPTR)
         {
             pRequest = new QNetworkRequest;
         }
@@ -303,9 +303,11 @@ void IpDetect::replyFinished(QNetworkReply *reply)
         {
             qDebug() << QStringLiteral("無法寫入 ")+errLogFileName;
         }
-
         reply->deleteLater();
     }
+    disconnect(pReply,SIGNAL(readyRead()),this,SLOT(readyRead()));
+    delete pReply;
+    pReply=Q_NULLPTR;
     downPage = false;
 }
 
