@@ -1,5 +1,7 @@
 #include "ipdetect.h"
 #include <QApplication>
+#include <QMediaPlayer>
+#include <QFileInfo>
 
 int main(int argc, char *argv[])
 {

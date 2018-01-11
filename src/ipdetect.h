@@ -8,6 +8,7 @@
 
 class QNetworkAccessManager;class QNetworkReply;class QNetworkRequest;
 class QDate;class QTime;
+class QMediaPlayer;
 class QTimer;
 class QAction;class QMenu;
 class IpRecordGui;
@@ -41,6 +42,7 @@ private:
     QAction *trayIconExitAppAction=0;
     QMenu *trayIconMenu=0;
     QByteArray ipWebContent;
+    QMediaPlayer *ipChangeBellPlayer=0;
     QNetworkAccessManager *pNetManager=0;
     QNetworkRequest *pRequest=0;
     QNetworkReply *pReply=0;

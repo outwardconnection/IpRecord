@@ -12,6 +12,7 @@
 #include <QTime>
 #include <QAction>
 #include <QMenu>
+#include <QMediaPlayer>
 #include <QMessageBox>
 
 IpDetect::IpDetect(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
@@ -76,6 +77,10 @@ IpDetect::~IpDetect()
     if(ui!=Q_NULLPTR)
     {
         delete ui;
+    }
+    if(ipChangeBellPlayer!=Q_NULLPTR)
+    {
+        ipChangeBellPlayer->deleteLater();
     }
 }
 
@@ -268,6 +273,13 @@ void IpDetect::compareIp()
         }
         else
         {
+            if(ipChangeBellPlayer==Q_NULLPTR)
+            {
+                ipChangeBellPlayer = new QMediaPlayer;
+            }
+            ipChangeBellPlayer->setMedia(QUrl::fromLocalFile("./bell/n12.mp3"));
+            ipChangeBellPlayer->setVolume(1000);
+            ipChangeBellPlayer->play();
             preIp = currentIp;
             ipChangeTimes++;
             writeData();
